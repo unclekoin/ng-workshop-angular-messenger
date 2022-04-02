@@ -7,18 +7,24 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConversationListComponent } from './components/conversation-list/conversation-list.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ChatMessageComponent } from './components/chat-message/chat-message.component';
+import { FormsModule } from '@angular/forms';
+import { StatusDirective } from './directives/status.directive';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConversationListComponent,
     ChatComponent,
-    ChatMessageComponent
+    ChatMessageComponent,
+    StatusDirective,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

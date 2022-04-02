@@ -25,11 +25,13 @@
           <div class="row no-gutters">
 
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
-              <app-conversation-list></app-conversation-list>
+              <app-conversation-list
+                (selectConversation)="onSelectedConversation($event)">
+              </app-conversation-list>
             </div>
 
             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
-              <app-chat></app-chat>
+              <app-chat [selectedConversation]="selectedConversation" (postMessage)="onPostMessage($event)"></app-chat>
             </div>
           </div>
           <!-- Row end -->

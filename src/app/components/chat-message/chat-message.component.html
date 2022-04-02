@@ -1,22 +1,14 @@
-<li class="chat-right">
+<li
+  [ngClass]="{
+  'chat-right': message?.sender === currentUser.id,
+  'chat-left': message?.sender !== currentUser.id
+  }">
   <div class="chat-avatar">
     <fa-icon class="fs-4" [icon]="faUser"></fa-icon>
-    <div class="chat-name">User Name</div>
+    <div class="chat-name">{{ user?.username }}</div>
   </div>
   <div class="chat-text">
-    Lorem ipsum dolor.
-    <br>Lorem ipsum dolor sit amet, consectetur adipisicing.
+    {{ message?.message }}
   </div>
-  <div class="chat-hour">Time</div>
-</li>
-<li class="chat-left">
-  <div class="chat-avatar">
-    <fa-icon class="fs-4" [icon]="faUser"></fa-icon>
-    <div class="chat-name">User Name</div>
-  </div>
-  <div class="chat-text">
-    Lorem ipsum dolor sit.
-    <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis!
-  </div>
-  <div class="chat-hour">Time</div>
+  <div class="chat-hour">{{ message?.timestamp | date: 'short' }}</div>
 </li>

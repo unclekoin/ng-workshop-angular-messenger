@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { faUser, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { conversationListMock } from '../../../mocks/conversation-list.mock';
+import { BaseConversationModel } from '../../../models/conversation.model';
 
 @Component({
   selector: 'app-conversation-list',
@@ -8,10 +10,21 @@ import { faUser, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 })
 export class ConversationListComponent implements OnInit {
   public faUser = faUser;
-  public faMagnifyingGlass = faMagnifyingGlass;
+  public list =  conversationListMock;
+
+  public searchTerm: string = '';
+
+  public selectedConversationId: string = '';
+  @Output() selectConversation = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
+  onSelectConversation(item: BaseConversationModel) {
+    this.selectedConversationId = item.id;
+    this.selectConversation.emit(item);
+  }
 }
